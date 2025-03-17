@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
 
 const collateralSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+  assetName: {
+    type: String,
     required: true,
+  },
+  img: {
+    type: String,
   },
   assetType: {
     type: String,
@@ -22,6 +24,9 @@ const collateralSchema = new mongoose.Schema({
   isUsed: {
     type: Boolean,
     default: false,
+  },
+  yearsLeft: {
+    type: Date,
   },
   createdAt: {
     type: Date,

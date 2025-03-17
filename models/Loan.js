@@ -1,9 +1,8 @@
 import mongoose from "mongoose";
 
 const loanSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+  company: {
+    type: String,
     required: true,
   },
   collateral: {
@@ -15,9 +14,33 @@ const loanSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  interestRate: {
+    type: Number,
+  },
+  amountPaid: {
+    type: Number,
+  },
+  balance: {
+    type: Number,
+  },
+  tenor: {
+    type: Number,
+  },
+  loanee: {
+    type: String,
+    required: true,
+  },
+  nationalId: {
+    type: String,
+    unique: true,
+  },
+  bankVerificationNumber: {
+    type: String,
+    unique: true,
+  },
   status: {
     type: String,
-    enum: ['Pending', 'Approved', 'Rejected'],
+    enum: ['Pending', 'Approved', 'Rejected', 'Settled'],
     default: 'Pending',
   },
   applicationDate: {
