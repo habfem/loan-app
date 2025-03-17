@@ -10,13 +10,8 @@ const bankSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  accountNumber: {
+  address :{
     type: String,
-    required: true,
-  },
-  accountType: {
-    type: String,
-    enum: ['Savings', 'Current'],
     required: true,
   },
   createdAt: {
