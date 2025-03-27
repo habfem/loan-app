@@ -5,8 +5,8 @@ const collateralSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  img: {
-    type: String,
+  images: {
+    type: Array,
   },
   assetType: {
     type: String,

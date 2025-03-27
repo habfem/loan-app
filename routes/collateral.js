@@ -4,21 +4,18 @@ import {
   getUserCollateral,
   updateCollateral,
   deleteCollateral,
+  getCollateralById,
+  getCollaterals,
 } from "../controllers/collateral.js";
-import { verifyToken } from "../utils/verifyToken.js";
+import { Multer, uploadImages } from "../middlewares/uploadFile.js";
 
 const router = express.Router();
 
-// Create a new collateral asset
-router.post("/", verifyToken, createCollateral);
-
-// Get all collateral assets for a user
-router.get("/user/:userId", verifyToken, getUserCollateral);
-
-// Update a collateral asset
-router.put("/:id", verifyToken, updateCollateral);
-
-// Delete a collateral asset
-router.delete("/:id", verifyToken, deleteCollateral);
+router.post("/", Multer.array("images"), uploadImages, createCollateral);
+router.get("/user/:userId", getUserCollateral);
+router.get("/", getCollaterals)
+router.get("/:id", getCollateralById)
+router.put("/:id", Multer.array("images"), uploadImages, updateCollateral);
+router.delete("/:id", deleteCollateral);
 
 export default router;
